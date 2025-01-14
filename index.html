@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown to July 15th</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Animated Particles */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10.01%);
+      background-size: 20px 20px;
+      animation: moveBackground 5s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBackground {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(20px);
+      }
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Heading */
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #ff9a9e, 0 0 10px #fad0c4, 0 0 20px #fbc2eb, 0 0 40px #a6c1ee;
+      }
+      100% {
+        text-shadow: 0 0 10px #ff9a9e, 0 0 20px #fad0c4, 0 0 40px #fbc2eb, 0 0 80px #a6c1ee;
+      }
+    }
+
+    /* BAC 2025 WE CAN Section */
+    .bac-section {
+      font-size: 3.5rem; /* Large font size */
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 1.5rem;
+    }
+
+    .countdown div {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      width: 100px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .countdown div:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .countdown span {
+      display: block;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      font-weight: 600;
+      color: #fff;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .countdown i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #fff;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .countdown div:hover i {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Like Button */
+    .like-button {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .like-button:hover {
+      color: #ff6b6b;
+      transform: scale(1.2);
+    }
+
+    .like-button.liked {
+      color: #ff6b6b;
+      animation: heartBeat 0.5s;
+    }
+
+    @keyframes heartBeat {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.3);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    footer:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+
+    /* Visitor Counter */
+    .visitor-count {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .visitor-count:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Countdown to July 15th</h1>
+    <div class="bac-section">BAC 2025 WE CAN</div>
+    <div class="countdown">
+      <div>
+        <i class="fas fa-calendar-day" aria-label="Days"></i>
+        <span id="days">0</span>
+        Days
+      </div>
+      <div>
+        <i class="fas fa-clock" aria-label="Hours"></i>
+        <span id="hours">0</span>
+        Hours
+      </div>
+      <div>
+        <i class="fas fa-hourglass-half" aria-label="Minutes"></i>
+        <span id="minutes">0</span>
+        Minutes
+      </div>
+      <div>
+        <i class="fas fa-stopwatch" aria-label="Seconds"></i>
+        <span id="seconds">0</span>
+        Seconds
+      </div>
+    </div>
+    <div class="like-button" id="likeButton">
+      <i class="far fa-heart"></i> <span id="likeCount">0</span> Likes
+    </div>
+    <div class="visitor-count">
+      <i class="fas fa-users" aria-label="Visitor count"></i>
+      <span id="visitors">0</span> Visitors
+    </div>
+    <footer>
+      Built with ❤️ for your special countdown.
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID",
+      databaseURL: "YOUR_DATABASE_URL"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Visitor Counter Logic
+    const visitorCountRef = database.ref('visitorCount');
+    visitorCountRef.transaction((count) => (count || 0) + 1);
+
+    // Display Visitor Count
+    visitorCountRef.on('value', (snapshot) => {
+      document.getElementById('visitors').textContent = snapshot.val() || 0;
+    });
+
+    // Like Button Logic
+    const likeButton = document.getElementById('likeButton');
+    const likeCountRef = database.ref('likeCount');
+    let liked = false;
+
+    likeButton.addEventListener('click', () => {
+      if (!liked) {
+        likeCountRef.transaction((count) => (count || 0) + 1);
+        likeButton.classList.add('liked');
+        liked = true;
+      }
+    });
+
+    // Display Like Count
+    likeCountRef.on('value', (snapshot) => {
+      document.getElementById('likeCount').textContent = snapshot.val() || 0;
+    });
+
+    // Countdown Timer Logic
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const targetDate = new Date(Date.UTC(new Date().getFullYear(), 6, 15, 0, 0, 0)).getTime(); // July 15 in UTC
+      const timeLeft = targetDate - now;
+
+      // Check if the target date has been reached
+      if (timeLeft <= 0) {
+        document.querySelector('.countdown').innerHTML = "<h2>The day has arrived!</h2>";
+        return;
+      }
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      // Update the countdown display
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    // Initialize the countdown timer
+    updateCountdown(); // Call immediately to avoid delay
+    setInterval(updateCountdown, 1000); // Update every second
+  </script>
+</body>
+</html>
