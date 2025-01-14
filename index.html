@@ -307,7 +307,13 @@
     // Countdown Timer Logic
     function updateCountdown() {
       const now = new Date().getTime();
-      const targetDate = new Date(Date.UTC(new Date().getFullYear(), 6, 15, 0, 0, 0)).getTime(); // July 15 in UTC
+      let targetDate = new Date(Date.UTC(new Date().getFullYear(), 6, 15, 0, 0, 0)).getTime(); // July 15 in UTC
+
+      // If July 15th has already passed this year, set the target to next year
+      if (now > targetDate) {
+        targetDate = new Date(Date.UTC(new Date().getFullYear() + 1, 6, 15, 0, 0, 0)).getTime();
+      }
+
       const timeLeft = targetDate - now;
 
       // Check if the target date has been reached
