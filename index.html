@@ -306,7 +306,7 @@
 
     // Countdown Timer Logic
     function updateCountdown() {
-      const now = new Date().getTime();
+      const now = new Date().getTime(); // Current time in milliseconds
       let targetDate = new Date(Date.UTC(new Date().getFullYear(), 6, 15, 0, 0, 0)).getTime(); // July 15 in UTC
 
       // If July 15th has already passed this year, set the target to next year
