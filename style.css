@@ -1,127 +1,243 @@
-/* Add these styles to your existing CSS */
+/* Global Styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white;
+  text-align: center;
+  overflow: hidden; /* Ensure no scrollbars */
+}
 
-/* Hover Effects for Countdown Boxes */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animated Particles */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10.01%);
+  background-size: 20px 20px;
+  animation: moveBackground 5s linear infinite;
+  z-index: -1; /* Ensure it stays behind the content */
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* Main Container */
+.container {
+  max-width: 600px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative; /* Ensure it stays above the particles */
+  z-index: 1; /* Ensure it stays above the particles */
+}
+
+/* Heading */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff9a9e, 0 0 10px #fad0c4, 0 0 20px #fbc2eb, 0 0 40px #a6c1ee;
+  }
+  100% {
+    text-shadow: 0 0 10px #ff9a9e, 0 0 20px #fad0c4, 0 0 40px #fbc2eb, 0 0 80px #a6c1ee;
+  }
+}
+
+/* BAC 2025 WE CAN Section */
+.bac-section {
+  font-size: 3.5rem; /* Large font size */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Countdown Timer */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
 .countdown div {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  width: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.countdown div:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.countdown span {
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #fff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  
-  .countdown div:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Pulse Animation for Countdown Numbers */
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .countdown div span {
-    animation: pulse 2s infinite;
-  }
-  
-  /* Gradient Border Animation */
-  .countdown div {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .countdown div::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .countdown div:hover::before {
-    opacity: 0.3;
-  }
-  
-  /* Floating Animation for Particles */
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
-  body::before {
-    animation: moveBackground 5s linear infinite, float 6s ease-in-out infinite;
-  }
-  
-  /* Glow Effect for Icons */
-  .countdown i {
-    transition: text-shadow 0.3s ease;
-  }
-  
-  .countdown div:hover i {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
-  }
-  
-  /* Footer Hover Effect */
-  footer {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  footer:hover {
-    opacity: 1;
-    transform: translateY(-5px);
-  }
-  
-  /* Visitor Counter Animation */
-  .visitor-count {
-    transition: transform 0.3s ease;
-  }
-  
-  .visitor-count:hover {
+  50% {
     transform: scale(1.1);
   }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-  
-    .bac-section {
-      font-size: 2.5rem;
-    }
-  
-    .countdown {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-  
-    .countdown div {
-      width: 80%;
-      padding: 15px;
-    }
-  
-    .countdown span {
-      font-size: 1rem;
-    }
-  
-    .countdown i {
-      font-size: 1.5rem;
-    }
+  100% {
+    transform: scale(1);
   }
+}
+
+.countdown i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #fff;
+  transition: text-shadow 0.3s ease;
+}
+
+.countdown div:hover i {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Like Button */
+.like-button {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.like-button:hover {
+  color: #ff6b6b;
+  transform: scale(1.2);
+}
+
+.like-button.liked {
+  color: #ff6b6b;
+  animation: heartBeat 0.5s;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Footer */
+footer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+footer:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* Visitor Counter */
+.visitor-count {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.visitor-count:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .bac-section {
+    font-size: 2.5rem;
+  }
+
+  .countdown {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .countdown div {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .countdown span {
+    font-size: 1rem;
+  }
+
+  .countdown i {
+    font-size: 1.5rem;
+  }
+}
